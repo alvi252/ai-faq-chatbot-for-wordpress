@@ -1,0 +1,240 @@
+/* AI FAQ Chatbot: the chat window. --aifaq-accent is set from the settings. */
+.aifaq-chat {
+	--aifaq-accent: #1f2a37;
+	--aifaq-bg: #ffffff;
+	--aifaq-soft: #f4f1ec;
+	--aifaq-text: #1d1f24;
+	--aifaq-muted: #5f6670;
+	font-family: inherit;
+	font-size: 15px;
+	line-height: 1.45;
+	color: var(--aifaq-text);
+}
+
+.aifaq-chat *,
+.aifaq-chat *::before,
+.aifaq-chat *::after {
+	box-sizing: border-box;
+}
+
+.aifaq-chat--floating {
+	position: fixed;
+	right: 20px;
+	bottom: 20px;
+	z-index: 99999;
+	display: flex;
+	flex-direction: column;
+	align-items: flex-end;
+	gap: 12px;
+}
+
+.aifaq-chat__toggle {
+	display: inline-flex;
+	align-items: center;
+	gap: 10px;
+	padding: 12px 18px 12px 14px;
+	border: 0;
+	border-radius: 999px;
+	background: var(--aifaq-accent);
+	color: #fff;
+	font: inherit;
+	font-weight: 600;
+	cursor: pointer;
+	box-shadow: 0 8px 24px rgba(0, 0, 0, 0.18);
+}
+
+.aifaq-chat__toggle-icon {
+	width: 22px;
+	height: 22px;
+	background: currentColor;
+	-webkit-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M4 4h16v12H9l-5 4V4z'/%3E%3C/svg%3E") center / contain no-repeat;
+	mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M4 4h16v12H9l-5 4V4z'/%3E%3C/svg%3E") center / contain no-repeat;
+}
+
+.aifaq-chat__panel {
+	display: flex;
+	flex-direction: column;
+	width: min(380px, calc(100vw - 32px));
+	max-height: min(600px, calc(100vh - 120px));
+	border-radius: 16px;
+	background: var(--aifaq-bg);
+	box-shadow: 0 16px 40px rgba(0, 0, 0, 0.2);
+	overflow: hidden;
+}
+
+.aifaq-chat__panel[hidden] {
+	display: none;
+}
+
+.aifaq-chat--inline .aifaq-chat__panel {
+	width: 100%;
+	max-width: 720px;
+	max-height: 640px;
+	box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.08);
+}
+
+.aifaq-chat__header {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	padding: 14px 16px;
+	background: var(--aifaq-accent);
+	color: #fff;
+}
+
+.aifaq-chat__title {
+	margin: 0;
+	font-size: 16px;
+	font-weight: 700;
+	color: inherit;
+}
+
+.aifaq-chat__close {
+	border: 0;
+	background: transparent;
+	color: inherit;
+	font-size: 24px;
+	line-height: 1;
+	cursor: pointer;
+}
+
+.aifaq-chat__log {
+	flex: 1;
+	min-height: 160px;
+	padding: 14px;
+	overflow-y: auto;
+	background: var(--aifaq-soft);
+}
+
+.aifaq-chat__msg {
+	max-width: 88%;
+	margin: 0 0 10px;
+	padding: 10px 12px;
+	border-radius: 12px;
+	background: var(--aifaq-bg);
+	box-shadow: 0 1px 2px rgba(0, 0, 0, 0.06);
+}
+
+.aifaq-chat__msg--visitor {
+	margin-left: auto;
+	background: var(--aifaq-accent);
+	color: #fff;
+}
+
+.aifaq-chat__msg--muted {
+	color: var(--aifaq-muted);
+}
+
+.aifaq-chat__text {
+	margin: 0;
+	white-space: pre-wrap;
+}
+
+.aifaq-chat__thinking {
+	font-style: italic;
+}
+
+.aifaq-chat__cite {
+	display: inline-block;
+	min-width: 18px;
+	margin: 0 1px;
+	padding: 0 4px;
+	border-radius: 6px;
+	background: var(--aifaq-soft);
+	color: var(--aifaq-accent);
+	font-size: 12px;
+	font-weight: 700;
+	line-height: 18px;
+	text-align: center;
+	text-decoration: none;
+	vertical-align: 1px;
+}
+
+.aifaq-chat__sources {
+	margin-top: 8px;
+	padding-top: 8px;
+	border-top: 1px solid rgba(0, 0, 0, 0.08);
+	font-size: 13px;
+}
+
+.aifaq-chat__sources-label {
+	color: var(--aifaq-muted);
+	font-weight: 600;
+}
+
+.aifaq-chat__source-list {
+	margin: 4px 0 0;
+	padding-left: 20px;
+}
+
+.aifaq-chat__source-list a,
+.aifaq-chat__contact {
+	color: var(--aifaq-accent);
+}
+
+.aifaq-chat__contact {
+	display: inline-block;
+	margin-top: 6px;
+	font-weight: 600;
+}
+
+.aifaq-chat__form {
+	display: flex;
+	gap: 8px;
+	padding: 10px;
+	border-top: 1px solid rgba(0, 0, 0, 0.08);
+	background: var(--aifaq-bg);
+}
+
+.aifaq-chat__input {
+	flex: 1;
+	min-height: 44px;
+	padding: 10px 12px;
+	border: 1px solid rgba(0, 0, 0, 0.18);
+	border-radius: 10px;
+	font: inherit;
+	resize: none;
+}
+
+.aifaq-chat__send {
+	padding: 0 16px;
+	border: 0;
+	border-radius: 10px;
+	background: var(--aifaq-accent);
+	color: #fff;
+	font: inherit;
+	font-weight: 600;
+	cursor: pointer;
+}
+
+.aifaq-chat__send:disabled {
+	opacity: 0.6;
+	cursor: wait;
+}
+
+.aifaq-chat__note {
+	margin: 0;
+	padding: 0 12px 10px;
+	background: var(--aifaq-bg);
+	color: var(--aifaq-muted);
+	font-size: 12px;
+}
+
+.aifaq-chat__toggle:focus-visible,
+.aifaq-chat__send:focus-visible,
+.aifaq-chat__close:focus-visible,
+.aifaq-chat a:focus-visible {
+	outline: 3px solid #f0a35e;
+	outline-offset: 2px;
+}
+
+@media (max-width: 480px) {
+	.aifaq-chat--floating {
+		right: 12px;
+		bottom: 12px;
+	}
+
+	.aifaq-chat__toggle-label {
+		display: none;
+	}
+}

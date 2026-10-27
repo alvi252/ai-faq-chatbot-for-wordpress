@@ -1,0 +1,74 @@
+# Local demo and development environment. Not needed to use the plugin.
+#
+#   bin/demo-setup.sh          # start, install WordPress + WooCommerce, seed the demo shop
+#   docker compose -p aifaq-demo down -v
+#
+# WordPress: http://localhost:8092/wp-admin (admin / admin, local only).
+#
+# API keys are never stored in this repository. For a live run, pass
+# AIFAQ_OPENAI_API_KEY to the command that starts the wordpress and cli
+# services; wp-config.php turns it into the plugin's constant. Without it
+# the plugin shows "Add an OpenAI API key" and the chat stays hidden.
+name: aifaq-demo
+
+x-wp-env: &wp-env
+  WORDPRESS_DB_HOST: db
+  WORDPRESS_DB_USER: wordpress
+  WORDPRESS_DB_PASSWORD: wordpress
+  WORDPRESS_DB_NAME: wordpress
+  WORDPRESS_DEBUG: "1"
+  AIFAQ_OPENAI_API_KEY: ${AIFAQ_OPENAI_API_KEY:-}
+  WORDPRESS_CONFIG_EXTRA: |
+    define( 'WP_DEBUG_LOG', true );
+    define( 'WP_DEBUG_DISPLAY', false );
+    foreach ( array( 'AIFAQ_OPENAI_API_KEY' ) as $$aifaq_key ) {
+      if ( '' !== (string) getenv( $$aifaq_key ) && ! defined( $$aifaq_key ) ) {
+        define( $$aifaq_key, (string) getenv( $$aifaq_key ) );
+      }
+    }
+
+x-wp-volumes: &wp-volumes
+  - wp-data:/var/www/html
+  - ./:/var/www/html/wp-content/plugins/ai-faq-chatbot:ro
+
+services:
+  db:
+    image: mariadb:11.4
+    environment:
+      MARIADB_DATABASE: wordpress
+      MARIADB_USER: wordpress
+      MARIADB_PASSWORD: wordpress
+      MARIADB_ROOT_PASSWORD: root
+    volumes:
+      - db-data:/var/lib/mysql
+    healthcheck:
+      test: ["CMD", "healthcheck.sh", "--connect", "--innodb_initialized"]
+      interval: 5s
+      timeout: 5s
+      retries: 30
+
+  wordpress:
+    image: wordpress:php8.2-apache
+    depends_on:
+      db:
+        condition: service_healthy
+    ports:
+      - "127.0.0.1:${AIFAQ_PORT:-8092}:80"
+    environment: *wp-env
+    volumes: *wp-volumes
+
+  # WP-CLI, run on demand: docker compose -p aifaq-demo run --rm cli wp aifaq index
+  cli:
+    image: wordpress:cli-php8.2
+    profiles: ["cli"]
+    user: "33:33"
+    depends_on:
+      - wordpress
+    environment:
+      <<: *wp-env
+      HOME: /tmp
+    volumes: *wp-volumes
+
+volumes:
+  db-data:
+  wp-data:

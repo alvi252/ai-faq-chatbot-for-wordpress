@@ -1,0 +1,59 @@
+<?xml version="1.0"?>
+<ruleset name="AI FAQ Chatbot">
+	<description>WordPress Coding Standards for the plugin code.</description>
+
+	<file>.</file>
+	<exclude-pattern>/vendor/*</exclude-pattern>
+	<exclude-pattern>/tests/*</exclude-pattern>
+	<exclude-pattern>/bin/*</exclude-pattern>
+	<exclude-pattern>/demo/*</exclude-pattern>
+
+	<arg name="extensions" value="php"/>
+	<arg name="parallel" value="8"/>
+	<arg name="colors"/>
+	<arg value="sp"/>
+
+	<config name="minimum_wp_version" value="6.5"/>
+
+	<rule ref="WordPress">
+		<!-- PSR-4 file names (src/Core/Search/HybridSearch.php) instead of class-hybrid-search.php. -->
+		<exclude name="WordPress.Files.FileName"/>
+	</rule>
+
+	<rule ref="WordPress.WP.I18n">
+		<properties>
+			<property name="text_domain" type="array">
+				<element value="ai-faq-chatbot"/>
+			</property>
+		</properties>
+	</rule>
+
+	<rule ref="WordPress.NamingConventions.PrefixAllGlobals">
+		<properties>
+			<property name="prefixes" type="array">
+				<element value="aifaq"/>
+				<element value="AIFAQ"/>
+			</property>
+		</properties>
+	</rule>
+
+	<!--
+		Exception messages are data, not output: every exception is caught and its
+		reason stored or shown escaped. The WordPress-independent classes (unit tested
+		without WordPress) cannot call esc_html().
+	-->
+	<rule ref="WordPress.Security.EscapeOutput">
+		<exclude name="WordPress.Security.EscapeOutput.ExceptionNotEscaped"/>
+	</rule>
+
+	<!--
+		src/Core is WordPress-independent (unit tested without WordPress), so it uses
+		json_encode() and strip_tags() instead of wp_json_encode() and wp_strip_all_tags().
+	-->
+	<rule ref="WordPress.WP.AlternativeFunctions.json_encode_json_encode">
+		<exclude-pattern>/src/Core/*</exclude-pattern>
+	</rule>
+	<rule ref="WordPress.WP.AlternativeFunctions.strip_tags_strip_tags">
+		<exclude-pattern>/src/Core/*</exclude-pattern>
+	</rule>
+</ruleset>

@@ -1,0 +1,111 @@
+{
+  "products": [
+    {
+      "name": "AquaFlow Fountain",
+      "slug": "aquaflow-fountain",
+      "price": "49.90",
+      "sku": "PP-AQF-25",
+      "short": "Water fountain for cats and small dogs with a carbon filter and a quiet low-voltage pump.",
+      "description": "<p>Holds 2.5 litres of water and keeps it moving through a replaceable carbon filter. Part of the PawPantry Pro range; the warranty terms are on our Product Warranty page. Care and filter changes are explained in our care guide.</p>",
+      "attributes": {
+        "Capacity": "2.5 litres",
+        "Material": "BPA-free plastic"
+      }
+    },
+    {
+      "name": "AquaFlow Replacement Filters (4-pack)",
+      "slug": "aquaflow-filters-4-pack",
+      "price": "12.90",
+      "sku": "PP-AQF-FLT4",
+      "short": "Four carbon filters for the AquaFlow Fountain.",
+      "description": "<p>Fits the AquaFlow Fountain only. How often to change the filter depends on the number of pets; see the care guide.</p>",
+      "attributes": {
+        "Pack size": "4 filters"
+      }
+    },
+    {
+      "name": "SmartBowl Feeder",
+      "slug": "smartbowl-feeder",
+      "price": "89.00",
+      "sku": "PP-SBF-4L",
+      "short": "Automatic feeder for dry food, up to 6 meals a day.",
+      "description": "<p>Dispenses dry food on a schedule of up to 6 meals a day, in portions of 5 g to 120 g. The hopper holds 4 litres, about 1.6 kg of kibble. Part of the PawPantry Pro range; the warranty terms are on our Product Warranty page.</p>",
+      "attributes": {
+        "Hopper": "4 litres",
+        "Meals per day": "up to 6"
+      }
+    },
+    {
+      "name": "ComfortHeat Heated Pet Bed",
+      "slug": "comfortheat-heated-bed",
+      "price": "69.00",
+      "sku": "PP-CHB-M",
+      "short": "Low-voltage heated bed with a washable cover, medium size.",
+      "description": "<p>Part of the PawPantry Pro range; the warranty terms are on our Product Warranty page. The cover comes off and can be washed at 30 °C.</p>",
+      "attributes": {
+        "Size": "Medium, 60 x 45 cm"
+      }
+    },
+    {
+      "name": "PawPantry Kitchen Adult Dog, Chicken & Rice 3 kg",
+      "slug": "kitchen-adult-dog-chicken-3kg",
+      "price": "21.90",
+      "sku": "PP-KAD-CR3",
+      "short": "Complete dry food for adult dogs, chicken and rice.",
+      "description": "<p>Complete food for adult dogs of all sizes. Made in France. Daily amounts by weight are in our feeding guide.</p>",
+      "attributes": {
+        "Weight": "3 kg",
+        "Life stage": "Adult"
+      }
+    },
+    {
+      "name": "PawPantry Kitchen Adult Dog, Chicken & Rice 12 kg",
+      "slug": "kitchen-adult-dog-chicken-12kg",
+      "price": "64.90",
+      "sku": "PP-KAD-CR12",
+      "short": "Complete dry food for adult dogs, chicken and rice, large bag.",
+      "description": "<p>The same recipe as the 3 kg bag in a 12 kg bag. Made in France.</p>",
+      "attributes": {
+        "Weight": "12 kg",
+        "Life stage": "Adult"
+      }
+    },
+    {
+      "name": "PawPantry Kitchen Adult Cat, Salmon 2 kg",
+      "slug": "kitchen-adult-cat-salmon-2kg",
+      "price": "18.50",
+      "sku": "PP-KAC-S2",
+      "short": "Complete dry food for adult cats, with salmon.",
+      "description": "<p>Complete food for adult cats. Made in France.</p>",
+      "attributes": {
+        "Weight": "2 kg",
+        "Life stage": "Adult"
+      }
+    },
+    {
+      "name": "PawPantry Kitchen Puppy 3 kg",
+      "slug": "kitchen-puppy-3kg",
+      "price": "23.90",
+      "sku": "PP-KPU-3",
+      "short": "Growth formula for puppies.",
+      "description": "<p>Growth formula for puppies. Follow the table printed on the bag. Made in France.</p>",
+      "attributes": {
+        "Weight": "3 kg",
+        "Life stage": "Puppy"
+      }
+    },
+    {
+      "name": "PawPantry Kitchen Kitten 1.5 kg",
+      "slug": "kitchen-kitten-1-5kg",
+      "price": "15.90",
+      "sku": "PP-KKI-15",
+      "short": "Growth formula for kittens.",
+      "description": "<p>Growth formula for kittens. Follow the table printed on the bag. Made in France.</p>",
+      "attributes": {
+        "Weight": "1.5 kg",
+        "Life stage": "Kitten"
+      },
+      "out_of_stock": true
+    }
+  ]
+}

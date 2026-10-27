@@ -1,0 +1,39 @@
+{
+    "name": "aifaq/ai-faq-chatbot",
+    "description": "A chatbot for WordPress sites that answers visitors only from the site's own pages, cites the page behind every answer and says \"I don't know\" otherwise.",
+    "type": "wordpress-plugin",
+    "license": "GPL-2.0-or-later",
+    "keywords": ["wordpress", "chatbot", "faq", "rag", "openai", "woocommerce"],
+    "require": {
+        "php": ">=8.1"
+    },
+    "require-dev": {
+        "dealerdirect/phpcodesniffer-composer-installer": "^1.0",
+        "phpunit/phpunit": "^10.5",
+        "wp-coding-standards/wpcs": "^3.1"
+    },
+    "autoload": {
+        "psr-4": {
+            "AIFAQ\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "AIFAQ\\Tests\\": "tests/"
+        }
+    },
+    "config": {
+        "allow-plugins": {
+            "dealerdirect/phpcodesniffer-composer-installer": true
+        },
+        "platform": {
+            "php": "8.1.0"
+        },
+        "sort-packages": true
+    },
+    "scripts": {
+        "test": "phpunit",
+        "lint": "phpcs",
+        "lint:fix": "phpcbf"
+    }
+}

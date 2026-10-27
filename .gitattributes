@@ -1,0 +1,20 @@
+# Normalize line endings in the repository.
+* text=auto eol=lf
+*.png binary
+
+# Development files left out of `git archive` (bin/build-zip.sh builds the plugin zip that way).
+/.gitattributes      export-ignore
+/.gitignore          export-ignore
+/assets              export-ignore
+/bin                 export-ignore
+/composer.json       export-ignore
+/composer.lock       export-ignore
+/docker              export-ignore
+/docker-compose.yml  export-ignore
+/demo                export-ignore
+/docs                export-ignore
+/eval                export-ignore
+/phpcs.xml.dist      export-ignore
+/phpunit.xml.dist    export-ignore
+/README.md           export-ignore
+/tests               export-ignore
